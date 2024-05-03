@@ -1,5 +1,4 @@
 django==4.1.13
-mysqlclient==2.2.4 
 djangorestframework==3.14.0
 python-dotenv==1.0.0
 overrides==7.7.0

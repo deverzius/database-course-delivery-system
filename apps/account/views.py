@@ -17,3 +17,4 @@ class AccountViewSet(viewsets.ModelViewSet):
             return Response({
                 "data": Account.objects.all()
             })
+        
