@@ -5,7 +5,7 @@ GO
 
 CREATE TABLE dbo.tai_khoan
 (
-	id INT PRIMARY KEY IDENTITY(1,1),
+	id INT PRIMARY KEY,
 	ten_tai_khoan NVARCHAR(100) NOT NULL,
 	mat_khau NVARCHAR(100) NOT NULL,
 	sdt NVARCHAR(100) UNIQUE NOT NULL,
@@ -45,7 +45,7 @@ GO
 
 CREATE TABLE dbo.mon_an
 (
-	id INT PRIMARY KEY IDENTITY(1,1),
+	id INT PRIMARY KEY,
 	ten_mon NVARCHAR(100) NOT NULL,
 	gia INT NOT NULL,
 	mo_ta INT NOT NULL,
@@ -87,7 +87,7 @@ GO
 
 CREATE TABLE dbo.ma_khuyen_mai
 (
-	id INT PRIMARY KEY IDENTITY(1,1),
+	id INT PRIMARY KEY,
 	phan_tram_giam FLOAT NOT NULL,
 	ten_ma NVARCHAR(100) NOT NULL,
 	ngay_het_han DATE NOT NULL,
@@ -103,7 +103,7 @@ GO
 
 CREATE TABLE dbo.don_hang
 (
-	id INT PRIMARY KEY IDENTITY(1,1),
+	id INT PRIMARY KEY,
 	thoi_gian_nhan DATETIME NOT NULL,
 	dia_chi_giao_hang NVARCHAR(500) NOT NULL,
 	trang_thai_don_hang NVARCHAR(20) NOT NULL CHECK (trang_thai_don_hang IN ('dang_xu_ly', 'da_xac_nhan', 'dang_giao', 'da_giao', 'da_huy')),
@@ -128,7 +128,7 @@ GO
 
 CREATE TABLE dbo.chi_nhanh
 (
-	id INT PRIMARY KEY IDENTITY(1,1),
+	id INT PRIMARY KEY,
 	dia_chi NVARCHAR(500) NOT NULL,
 	ma_so_thue NVARCHAR(100) NOT NULL,
 	trang_thai NVARCHAR(20) NOT NULL CHECK (trang_thai IN ('mo_cua', 'dong_cua')),
@@ -144,7 +144,7 @@ CREATE TABLE dbo.phuong_tien
 (
 	bien_kiem_soat NVARCHAR(100) PRIMARY KEY,
 	loai_phuong_tien NVARCHAR(100) NOT NULL CHECK (loai_phuong_tien IN ('xe_may', 'xe_tai', 'xe_ban_tai')),
-	gplx NVARCHAR(100) NOT NULL,
+	gplx NVARCHAR(100) NOT NULL UNIQUE,
 	hinh_anh_xe NVARCHAR(300) NOT NULL,
 	id_shipper INT,
 
@@ -155,7 +155,7 @@ GO
 
 CREATE TABLE dbo.don_khieu_nai
 (
-	id INT PRIMARY KEY IDENTITY(1,1),
+	id INT PRIMARY KEY,
 	id_don_hang INT NOT NULL,
 	ngay_tao DATE NOT NULL,
 	ngay_xu_ly DATE NULL,
