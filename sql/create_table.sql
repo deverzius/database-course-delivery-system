@@ -19,7 +19,8 @@ CREATE TABLE dbo.tai_khoan
 	ngay_sinh DATE NOT NULL,
 	ngay_tao DATE NOT NULL,
 	ho NVARCHAR(100) NOT NULL,
-	ten NVARCHAR(100) NOT NULL
+	ten NVARCHAR(100) NOT NULL,
+	da_xoa BIT DEFAULT 0
 );
 GO
 
