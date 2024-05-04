@@ -63,20 +63,27 @@ VALUES
 	(17, 'mo_cua', 'Nha Hang G', '159 PQR Street', 'Nha hang G mo cua tu 10h sang den 12h toi');
 GO
 
-INSERT INTO dbo.nhan_vien
-	(id, ngay_vao_lam, luong, trang_thai, loai_nhan_vien, so_gplx)
+INSERT INTO dbo.chi_nhanh
+	(id, dia_chi, ma_so_thue, trang_thai, so_nhan_vien)
 VALUES
-	(18, '2021-01-01', 15000000, 'dang_lam', 'quan_ly', NULL),
-	(19, '2021-01-05', 2300000, 'dang_lam', 'quan_ly', NULL),
-	(20, '2021-02-10', 7000000, 'dang_lam', 'tong_dai_vien', NULL),
-	(21, '2021-03-15', 6700000, 'dang_lam', 'tong_dai_vien', NULL),
-	(22, '2021-04-20', 5500000, 'dang_lam', 'tong_dai_vien', NULL),
-	(23, '2021-05-25', 7100000, 'dang_lam', 'tong_dai_vien', NULL),
-	(24, '2021-06-30', 8300000, 'dang_lam', 'shipper', '43AHFDF12345'),
-	(25, '2021-07-10', 8400000, 'dang_lam', 'shipper', '76BSADF12325'),
-	(26, '2021-08-15', 8200000, 'dang_lam', 'shipper', '44CRKFU43278'),
-	(27, '2021-09-20', 8600000, 'dang_lam', 'shipper', '55DDSNR87654'),
-	(28, '2021-10-25', 8800000, 'dang_lam', 'shipper', '66EDJRN46373'),
-	(29, '2021-11-30', 8100000, 'dang_lam', 'shipper', '41FDSAF35522'),
-	(30, '2021-12-05', 9000000, 'dang_lam', 'shipper', '18GDSJB23455');
+	(1, N'123 Điện Biên Phủ, Quận 1, TP.HCM', 'THUE8ty902s534', 'mo_cua', 0),
+	(2, N'456 Nguyễn Huệ, Quận 1, TP.HCM', 'THUE32g55s8f90', 'mo_cua', 0);
+GO
+
+INSERT INTO dbo.nhan_vien
+	(id, ngay_vao_lam, luong, trang_thai, loai_nhan_vien, so_gplx, id_chi_nhanh)
+VALUES
+	(18, '2021-01-01', 15000000, 'dang_lam', 'quan_ly', NULL, 1),
+	(19, '2021-01-05', 2300000, 'dang_lam', 'quan_ly', NULL, 2),
+	(20, '2021-02-10', 7000000, 'dang_lam', 'tong_dai_vien', NULL, 1),
+	(21, '2021-03-15', 6700000, 'dang_lam', 'tong_dai_vien', NULL, 1),
+	(22, '2021-04-20', 5500000, 'dang_lam', 'tong_dai_vien', NULL, 2),
+	(23, '2021-05-25', 7100000, 'dang_lam', 'tong_dai_vien', NULL, 2),
+	(24, '2021-06-30', 8300000, 'dang_lam', 'shipper', '43AHFDF12345', 1),
+	(25, '2021-07-10', 8400000, 'dang_lam', 'shipper', '76BSADF12325', 1),
+	(26, '2021-08-15', 8200000, 'dang_lam', 'shipper', '44CRKFU43278', 1),
+	(27, '2021-09-20', 8600000, 'dang_lam', 'shipper', '55DDSNR87654', 1),
+	(28, '2021-10-25', 8800000, 'dang_lam', 'shipper', '66EDJRN46373', 2),
+	(29, '2021-11-30', 8100000, 'dang_lam', 'shipper', '41FDSAF35522', 2),
+	(30, '2021-12-05', 9000000, 'dang_lam', 'shipper', '18GDSJB23455', 2);
 GO

@@ -1,51 +1,4 @@
-
-IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'DeliverySystem')
-BEGIN
-	CREATE DATABASE DeliverySystem;
-END;
-GO
 USE DeliverySystem;
-GO
-
-
-CREATE TABLE dbo.tai_khoan
-(
-	id INT PRIMARY KEY,
-	ten_tai_khoan NVARCHAR(100) NOT NULL,
-	mat_khau NVARCHAR(100) NOT NULL,
-	sdt NVARCHAR(100) UNIQUE NOT NULL,
-	gioi_tinh BIT NOT NULL,
-	email NVARCHAR(100) NOT NULL,
-	ngay_sinh DATE NOT NULL,
-	ngay_tao DATE NOT NULL,
-	ho NVARCHAR(100) NOT NULL,
-	ten NVARCHAR(100) NOT NULL
-);
-GO
-
-CREATE TABLE dbo.khach_hang
-(
-	id INT PRIMARY KEY,
-	loai_khach_hang NVARCHAR(100) NOT NULL CHECK (loai_khach_hang IN ('moi', 'lau_nam', 'trung_thanh')),
-	cod_kha_dung BIT DEFAULT 1,
-	so_don_da_dat INT DEFAULT 0,
-	FOREIGN KEY (id) REFERENCES dbo.tai_khoan(id)
-);
-GO
-
-
-CREATE TABLE dbo.nha_hang
-(
-	id INT PRIMARY KEY,
-	trang_thai NVARCHAR(20) NOT NULL CHECK (trang_thai IN ('mo_cua', 'dong_cua', 'dong_cua_vinh_vien')),
-	ten_nha_hang NVARCHAR(100) NOT NULL,
-	danh_gia FLOAT DEFAULT 0,
-	dia_chi NVARCHAR(100) NOT NULL,
-	mo_ta NVARCHAR(500) NOT NULL,
-	so_don_da_ban INT DEFAULT 0,
-	doanh_thu INT DEFAULT 0,
-	FOREIGN KEY (id) REFERENCES dbo.tai_khoan(id)
-);
 GO
 
 CREATE TABLE dbo.mon_an
@@ -72,33 +25,6 @@ CREATE TABLE dbo.uu_dai_mon_an
 
 	PRIMARY KEY (id_mon_an, ten_ma),
 	FOREIGN KEY (id_mon_an) REFERENCES dbo.mon_an(id)
-);
-GO
-
-CREATE TABLE dbo.chi_nhanh
-(
-	id INT PRIMARY KEY,
-	dia_chi NVARCHAR(500) NOT NULL,
-	ma_so_thue NVARCHAR(100) NOT NULL,
-	trang_thai NVARCHAR(20) NOT NULL CHECK (trang_thai IN ('mo_cua', 'dong_cua')),
-	so_nhan_vien INT DEFAULT 0
-);
-GO
-
-CREATE TABLE dbo.nhan_vien
-(
-	id INT PRIMARY KEY,
-	ngay_vao_lam DATE NOT NULL,
-	luong INT NOT NULL,
-	chi_so_uy_tin FLOAT DEFAULT 10,
-	trang_thai NVARCHAR(20) NOT NULL CHECK (trang_thai IN ('dang_lam', 'nghi_viec')),
-	loai_nhan_vien NVARCHAR(20) NOT NULL CHECK (loai_nhan_vien IN ('quan_ly', 'shipper', 'tong_dai_vien')),
-	so_gplx NVARCHAR(100) NULL,
-	danh_gia FLOAT DEFAULT 5,
-	id_chi_nhanh INT NOT NULL,
-
-	FOREIGN KEY (id) REFERENCES dbo.tai_khoan(id),
-	FOREIGN KEY (id_chi_nhanh) REFERENCES dbo.chi_nhanh(id)
 );
 GO
 
@@ -143,10 +69,25 @@ CREATE TABLE dbo.don_hang
 ); 
 GO
 
+CREATE TABLE dbo.chi_nhanh
+(
+	id INT PRIMARY KEY,
+	dia_chi NVARCHAR(500) NOT NULL,
+	ma_so_thue NVARCHAR(100) NOT NULL,
+	trang_thai NVARCHAR(20) NOT NULL CHECK (trang_thai IN ('mo_cua', 'dong_cua')),
+	so_nhan_vien INT DEFAULT 0,
+	id_quan_ly INT,
+
+	FOREIGN KEY (id) REFERENCES dbo.nha_hang(id),
+	FOREIGN KEY (id_quan_ly) REFERENCES dbo.nhan_vien(id)
+);
+GO
+
 CREATE TABLE dbo.phuong_tien
 (
 	bien_kiem_soat NVARCHAR(100) PRIMARY KEY,
 	loai_phuong_tien NVARCHAR(100) NOT NULL CHECK (loai_phuong_tien IN ('xe_may', 'xe_tai', 'xe_ban_tai')),
+	gplx NVARCHAR(100) NOT NULL UNIQUE,
 	hinh_anh_xe NVARCHAR(300) NOT NULL,
 	id_shipper INT,
 
