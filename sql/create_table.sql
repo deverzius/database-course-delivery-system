@@ -69,7 +69,6 @@ CREATE TABLE dbo.uu_dai_mon_an
 	ngay_het_han DATE NOT NULL,
 	mo_ta NVARCHAR(300) NULL,
 	phan_tram_giam FLOAT NOT NULL,
-	so_tien_giam_toi_da INT NOT NULL,
 
 	PRIMARY KEY (id_mon_an, ten_ma),
 	FOREIGN KEY (id_mon_an) REFERENCES dbo.mon_an(id)
