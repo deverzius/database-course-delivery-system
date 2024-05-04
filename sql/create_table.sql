@@ -53,7 +53,7 @@ CREATE TABLE dbo.mon_an
 	id INT PRIMARY KEY,
 	ten_mon NVARCHAR(100) NOT NULL,
 	gia INT NOT NULL,
-	mo_ta INT NOT NULL,
+	mo_ta NVARCHAR(500) NOT NULL,
 	id_nha_hang INT NOT NULL,
 
 	FOREIGN KEY (id_nha_hang) REFERENCES dbo.nha_hang(id)
@@ -187,7 +187,7 @@ GO
 CREATE TABLE dbo.loai_hang_don_van_chuyen
 (
 	id_don_van_chuyen INT,
-	loai_hang NVARCHAR(100) NOT NULL,
+	loai_hang NVARCHAR(100) NOT NULL CHECK (loai_hang IN (N'Hàng dễ vỡ', N'Hàng điện tử', N'Hàng thực phẩm', N'Hàng quần áo', N'Hàng gia dụng', N'Hàng mỹ phẩm', N'Hàng sách vở', N'Hàng quà tặng', N'Hàng trang sức', N'Hàng dân dụng', N'Hàng công nghệ', N'Hàng y tế', N'Hàng điện lạnh', N'Hàng nội thất', N'Hàng giày dép', N'Hàng thể thao', N'Hàng phụ kiện', N'Hàng đồ chơi', N'Hàng linh kiện điện tử', N'Hàng vật liệu xây dựng')),
 	FOREIGN KEY (id_don_van_chuyen) REFERENCES dbo.don_van_chuyen(id)
 );
 GO
