@@ -40,7 +40,7 @@ CREATE TABLE dbo.nha_hang
 	id INT PRIMARY KEY,
 	trang_thai NVARCHAR(20) NOT NULL CHECK (trang_thai IN ('mo_cua', 'dong_cua', 'dong_cua_vinh_vien')),
 	ten_nha_hang NVARCHAR(100) NOT NULL,
-	danh_gia FLOAT DEFAULT 0,
+	danh_gia FLOAT NULL CHECK (danh_gia >= 1 AND danh_gia <= 5),
 	dia_chi NVARCHAR(100) NOT NULL,
 	mo_ta NVARCHAR(500) NOT NULL,
 	so_don_da_ban INT DEFAULT 0,
@@ -94,7 +94,7 @@ CREATE TABLE dbo.nhan_vien
 	trang_thai NVARCHAR(20) NOT NULL CHECK (trang_thai IN ('dang_lam', 'nghi_viec')),
 	loai_nhan_vien NVARCHAR(20) NOT NULL CHECK (loai_nhan_vien IN ('quan_ly', 'shipper', 'tong_dai_vien')),
 	so_gplx NVARCHAR(100) NULL,
-	danh_gia FLOAT DEFAULT 5,
+	danh_gia FLOAT NULL CHECK (danh_gia >= 1 AND danh_gia <= 5),
 	id_chi_nhanh INT NOT NULL,
 
 	FOREIGN KEY (id) REFERENCES dbo.tai_khoan(id),
@@ -132,7 +132,7 @@ CREATE TABLE dbo.don_hang
 	anh_nhan_hang NVARCHAR(300) NULL,
 	phuong_thuc_thanh_toan NVARCHAR(20) NOT NULL CHECK (phuong_thuc_thanh_toan IN ('tien_mat', 'the_ngan_hang', 'vi_dien_tu')),
 	binh_luan NVARCHAR(500) NULL,
-	danh_gia FLOAT NULL,
+	danh_gia INT NULL CHECK (danh_gia >= 1 AND danh_gia <= 5),
 	tong_tien FLOAT NULL,
 
 	id_khach_hang INT NOT NULL,
@@ -220,7 +220,7 @@ CREATE TABLE dbo.tu_van_giai_dap
 	id_khach_hang INT NOT NULL,
 	van_de NVARCHAR(500) NOT NULL,
 	ngay_tu_van DATE NOT NULL,
-	danh_gia_cua_khach_hang FLOAT NULL,
+	danh_gia INT CHECK (danh_gia >= 1 AND danh_gia <= 5),
 
 	PRIMARY KEY (id_tong_dai_vien, id_khach_hang),
 	FOREIGN KEY (id_tong_dai_vien) REFERENCES dbo.nhan_vien(id),
