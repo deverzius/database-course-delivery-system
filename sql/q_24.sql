@@ -93,8 +93,6 @@ GO
 
 
 -- FUNCTION 2
-DROP FUNCTION dbo.tinh_toan_danh_gia_trung_binh_cua_shipper_trong_thang;
-GO
 CREATE FUNCTION dbo.tinh_toan_danh_gia_trung_binh_cua_shipper_trong_thang
 (
 	@id_shipper INT,

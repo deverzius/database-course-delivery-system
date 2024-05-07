@@ -26,7 +26,7 @@ VALUES
 GO
 
 INSERT INTO dbo.tu_van_giai_dap
-	(id_tong_dai_vien, id_khach_hang, van_de, ngay_tu_van, danh_gia_cua_khach_hang)
+	(id_tong_dai_vien, id_khach_hang, van_de, ngay_tu_van, danh_gia)
 VALUES
 	(20, 1, 'Khach hang chua nhan duoc hang', '2024-05-01', 4.5),
 	(21, 2, 'Giao hang qua cham', '2024-05-02', 3.5),

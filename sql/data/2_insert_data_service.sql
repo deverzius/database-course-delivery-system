@@ -38,17 +38,17 @@ VALUES
 GO
 
 INSERT INTO dbo.uu_dai_mon_an
-	(id_mon_an, ten_ma, ngay_tao, ngay_het_han, mo_ta, phan_tram_giam, so_tien_giam_toi_da)
+	(id_mon_an, ten_ma, ngay_tao, ngay_het_han, mo_ta, phan_tram_giam)
 VALUES
-	(1, N'PHOBO10', '2024-05-01', '2024-06-01', N'Giảm 10% cho món Phở bò', 10, 5000),
-	(2, N'BUNRIEU15', '2024-05-02', '2024-06-02', N'Giảm 15% cho món Bún riêu', 14.5, 6000),
-	(3, N'BANHMIT10', '2024-05-03', '2024-06-03', N'Giảm 10% cho món Bánh mì thịt', 10, 3500),
-	(4, N'GOICUON20', '2024-05-04', '2024-06-04', N'Giảm 20% cho món Gỏi cuốn', 15.5, 9000),
-	(5, N'PHOGA10', '2024-05-05', '2024-06-05', N'Giảm 10% cho món Phở gà', 12, 5500),
-	(6, N'BUNCHA15', '2024-05-06', '2024-06-06', N'Giảm 15% cho món Bún chả', 15, 6000),
-	(7, N'COMGAXOIMO10', '2024-05-07', '2024-06-07', N'Giảm 10% cho món Cơm gà xối mỡ', 10, 6000),
-	(8, N'BUNTHITNUONG15', '2024-05-08', '2024-06-08', N'Giảm 15% cho món Bún thịt nướng', 10.8, 6750),
-	(9, N'COMTAM10', '2024-05-09', '2024-06-09', N'Giảm 10% cho món Cơm tấm', 11.3, 3500);
+	(1, N'PHOBO10', '2024-05-01', '2024-06-01', N'Giảm 10% cho món Phở bò', 10),
+	(2, N'BUNRIEU15', '2024-05-02', '2024-06-02', N'Giảm 15% cho món Bún riêu', 14),
+	(3, N'BANHMIT10', '2024-05-03', '2024-06-03', N'Giảm 10% cho món Bánh mì thịt', 10),
+	(4, N'GOICUON20', '2024-05-04', '2024-06-04', N'Giảm 20% cho món Gỏi cuốn', 15),
+	(5, N'PHOGA10', '2024-05-05', '2024-06-05', N'Giảm 10% cho món Phở gà', 12),
+	(6, N'BUNCHA15', '2024-05-06', '2024-06-06', N'Giảm 15% cho món Bún chả', 15),
+	(7, N'COMGAXOIMO10', '2024-05-07', '2024-06-07', N'Giảm 10% cho món Cơm gà xối mỡ', 10),
+	(8, N'BUNTHITNUONG15', '2024-05-08', '2024-06-08', N'Giảm 15% cho món Bún thịt nướng', 10),
+	(9, N'COMTAM10', '2024-05-09', '2024-06-09', N'Giảm 10% cho món Cơm tấm', 10);
 GO
 
 INSERT INTO dbo.ma_khuyen_mai
