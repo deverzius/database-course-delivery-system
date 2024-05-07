@@ -1,0 +1,36 @@
+
+INSERT INTO dbo.mon_an
+	(id, ten_mon, gia, mo_ta, id_nha_hang)
+VALUES
+	(1, N'Phở bò', 50000, N'Mô tả phở bò', 11),
+	(2, N'Bún riêu', 40000, N'Mô tả bún riêu cua', 11),
+	(3, N'Bánh mì thịt', 35000, N'Mô tả bánh mì thịt', 11),
+	(4, N'Gỏi cuốn', 45000, N'Mô tả gỏi cuốn', 11),
+	(5, N'Phở gà', 55000, N'Mô tả phở gà', 11),
+	(6, N'Bún chả', 40000, N'Mô tả bún chả', 12),
+	(7, N'Cơm gà xối mỡ', 60000, N'Mô tả cơm gà xối mỡ', 12),
+	(8, N'Bún thịt nướng', 45000, N'Mô tả bún thịt nướng', 12),
+	(9, N'Cơm tấm', 35000, N'Mô tả cơm tấm', 12),
+	(10, N'Bún bò Huế', 50000, N'Mô tả bún bò Huế', 13),
+	(11, N'Gà nướng', 65000, N'Mô tả gà nướng', 13),
+	(12, N'Cơm chiên', 40000, N'Mô tả cơm chiên', 13),
+	(13, N'Bún mắm', 55000, N'Mô tả bún mắm', 13),
+	(14, N'Canh chua', 45000, N'Mô tả canh chua', 14),
+	(15, N'Trứng chiên', 25000, N'Mô tả trứng chiên', 14),
+	(16, N'Bánh cuốn', 30000, N'Mô tả bánh cuốn', 14),
+	(17, N'Ốc len xào dừa', 70000, N'Mô tả ốc len xào dừa', 14),
+	(18, N'Bánh tráng trộn', 25000, N'Mô tả bánh tráng trộn', 15),
+	(19, N'Mì xào giòn', 40000, N'Mô tả mì xào giòn', 15),
+	(20, N'Bánh canh', 45000, N'Mô tả bánh canh', 15),
+	(21, N'Xôi gấc', 30000, N'Mô tả xôi gấc', 15),
+	(22, N'Chè trôi nước', 35000, N'Mô tả chè trôi nước', 15),
+	(23, N'Bánh tráng cuốn', 20000, N'Mô tả bánh tráng cuốn', 16),
+	(24, N'Ốc len xào dừa', 70000, N'Mô tả ốc len xào dừa', 16),
+	(25, N'Mì vịt tiềm', 55000, N'Mô tả mì vịt tiềm', 16),
+	(26, N'Bánh xèo', 40000, N'Mô tả bánh xèo', 16),
+	(27, N'Bún ốc', 60000, N'Mô tả bún ốc', 16),
+	(28, N'Tôm hấp', 75000, N'Mô tả tôm hấp', 17),
+	(29, N'Canh bún', 35000, N'Mô tả canh bún', 17),
+	(30, N'Bò kho', 65000, N'Mô tả bò kho', 17),
+	(31, N'Bánh tráng nướng', 30000, N'Mô tả bánh tráng nướng', 17);
+GO

@@ -122,6 +122,7 @@ CREATE TABLE dbo.don_hang
 (
 	id INT PRIMARY KEY,
 	thoi_gian_nhan DATETIME NOT NULL,
+	ngay_tao DATETIME DEFAULT GETDATE(),
 	dia_chi_giao_hang NVARCHAR(500) NOT NULL,
 	trang_thai_don_hang NVARCHAR(20) NOT NULL CHECK (trang_thai_don_hang IN ('dang_xu_ly', 'da_xac_nhan', 'dang_giao', 'da_giao', 'da_huy')),
 	tien_ship INT NOT NULL,
@@ -196,7 +197,7 @@ GO
 CREATE TABLE dbo.don_mon_an
 (
 	id INT NOT NULL,
-	tong_tien_mon FLOAT NOT NULL,
+	tong_tien_mon FLOAT DEFAULT 0,
 	FOREIGN KEY (id) REFERENCES dbo.don_hang(id),
 );
 GO
