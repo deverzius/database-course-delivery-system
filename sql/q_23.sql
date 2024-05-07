@@ -62,10 +62,15 @@ BEGIN
 		tk.id, tk.ten_tai_khoan
 END;
 GO
+-- DEMO
+EXEC dbo.lay_tai_khoan_khach_hang;
+EXEC dbo.lay_tai_khoan_khach_hang @gioi_tinh=0;
+EXEC dbo.lay_tai_khoan_khach_hang @loai_khach_hang="lau_nam";
+GO
 
 
 
--- Procedure 2: Danh sách các món ăn được đặt nhiều nhất trong tháng
+-- Procedure 2: Danh sách các món ăn được đặt nhiều nhất trong tháng (món ăn phải có tối thiểu 3 đơn)
 CREATE PROCEDURE dbo.lay_cac_mon_an_duoc_dat_nhieu_nhat_trong_thang
 	@thang INT,
 	@nam INT
@@ -77,7 +82,7 @@ BEGIN
 		ma.gia,
 		ma.mo_ta,
 		ma.id_nha_hang,
-		SUM(gma.so_luong) AS so_luong_da_dat
+		ISNULL(SUM(gma.so_luong), 0) AS so_luong_da_dat
 	FROM
 		dbo.mon_an AS ma
 	JOIN
@@ -89,10 +94,12 @@ BEGIN
 		YEAR(dh.ngay_tao) = @nam
 	GROUP BY
 		ma.id, ma.ten_mon, ma.gia, ma.mo_ta, ma.id_nha_hang
+	HAVING 
+		SUM(gma.so_luong) >= 3
 	ORDER BY
 		so_luong_da_dat DESC
 END;
 GO
-
+-- DEMO
 EXEC dbo.lay_cac_mon_an_duoc_dat_nhieu_nhat_trong_thang 5, 2024;
 
