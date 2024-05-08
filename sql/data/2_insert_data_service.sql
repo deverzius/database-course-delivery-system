@@ -115,16 +115,16 @@ GO
 
 INSERT INTO dbo.loai_hang_don_van_chuyen (id_don_van_chuyen, loai_hang)
 VALUES
-    (1, N'Hàng điện tử'),
-    (2, N'Hàng điện tử'),
-    (3, N'Hàng thực phẩm'),
-    (4, N'Hàng quần áo'),
-    (5, N'Hàng gia dụng'),
-    (6, N'Hàng mỹ phẩm'),
-    (7, N'Hàng sách vở'),
-    (8, N'Hàng quà tặng'),
-    (9, N'Hàng mỹ phẩm'),
-    (10, N'Hàng quần áo');
+    (1, 'hang_dien_tu'),
+	(2, 'hang_dien_tu'),
+	(3, 'hang_thuc_pham'),
+	(4, 'hang_quan_ao'),
+	(5, 'hang_gia_dung'),
+	(6, 'hang_my_pham'),
+	(7, 'hang_sach_vo'),
+	(8, 'hang_qua_tang'),
+	(9, 'hang_my_pham'),
+	(10, 'hang_thuc_pham');
 
 INSERT INTO dbo.don_mon_an (id, tong_tien_mon)
 VALUES

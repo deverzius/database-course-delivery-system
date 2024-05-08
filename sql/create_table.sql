@@ -188,7 +188,7 @@ GO
 CREATE TABLE dbo.loai_hang_don_van_chuyen
 (
 	id_don_van_chuyen INT,
-	loai_hang NVARCHAR(100) NOT NULL CHECK (loai_hang IN (N'Hàng dễ vỡ', N'Hàng điện tử', N'Hàng thực phẩm', N'Hàng quần áo', N'Hàng gia dụng', N'Hàng mỹ phẩm', N'Hàng sách vở', N'Hàng quà tặng', N'Hàng trang sức', N'Hàng dân dụng', N'Hàng công nghệ', N'Hàng y tế', N'Hàng điện lạnh', N'Hàng nội thất', N'Hàng giày dép', N'Hàng thể thao', N'Hàng phụ kiện', N'Hàng đồ chơi', N'Hàng linh kiện điện tử', N'Hàng vật liệu xây dựng')),
+	loai_hang NVARCHAR(100) NOT NULL CHECK (loai_hang IN ('hang_de_vo', 'hang_dien_tu', 'hang_thuc_pham', 'hang_quan_ao', 'hang_gia_dung', 'hang_my_pham', 'hang_sach_vo', 'hang_qua_tang', 'hang_trang_suc', 'hang_cong_nghe', 'hang_y_te', 'hang_dien_lanh', 'hang_noi_that', 'hang_giay_dep', 'hang_the_thao', 'hang_phu_kien', 'hang_do_choi', 'hang_linh_kien_dien_tu', 'hang_vat_lieu_xay_dung')),
 	FOREIGN KEY (id_don_van_chuyen) REFERENCES dbo.don_van_chuyen(id)
 );
 GO
