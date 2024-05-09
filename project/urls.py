@@ -15,14 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from views import q31
+from django.conf.urls.static import static
+from django.conf import settings
 
-from apps.account.views import AccountViewSet
-from rest_framework.routers import DefaultRouter
-
-router = DefaultRouter()
-router.register(r'', AccountViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
-]
+    path('apps/q31/', q31.index),
+    path('apps/q31/create-account/', q31.create_account),
+] 
+# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
