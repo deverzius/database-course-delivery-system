@@ -7,7 +7,6 @@
 
 
 CREATE PROCEDURE dbo.tao_tai_khoan
-	@id INT,
 	@ten_tai_khoan NVARCHAR(100),
 	@mat_khau NVARCHAR(100),
 	@sdt NVARCHAR(100),
@@ -19,6 +18,11 @@ CREATE PROCEDURE dbo.tao_tai_khoan
 	@ten NVARCHAR(100)
 AS
 BEGIN
+	SET NOCOUNT ON;
+
+	DECLARE @id INT;
+	SELECT @id = MAX(id) + 1 FROM dbo.tai_khoan;
+
 	IF EXISTS (SELECT 1 FROM dbo.tai_khoan WHERE sdt = @sdt)
     BEGIN
 		RAISERROR('So dien thoai nay da duoc su dung!', 16, 1);
@@ -63,6 +67,8 @@ BEGIN
 		(id, ten_tai_khoan, mat_khau, sdt, gioi_tinh, email, ngay_sinh, ngay_tao, ho, ten, da_xoa)
 	VALUES
 		(@id, @ten_tai_khoan, @mat_khau, @sdt, @gioi_tinh, @email, @ngay_sinh, @ngay_tao, @ho, @ten, 0);
+	
+	SELECT 'Tao tai khoan thanh cong!' AS Message;
 END
 GO
 
@@ -82,6 +88,8 @@ CREATE PROCEDURE dbo.sua_tai_khoan
 	@ten NVARCHAR(100) = NULL
 AS
 BEGIN
+	SET NOCOUNT ON;
+
     IF NOT EXISTS (SELECT 1 FROM dbo.tai_khoan WHERE id = @id)
     BEGIN
         RAISERROR('Khong tim thay tai khoan!', 16, 1);
@@ -146,6 +154,8 @@ CREATE PROCEDURE dbo.xoa_tai_khoan
 	@id INT
 AS
 BEGIN
+	SET NOCOUNT ON;
+
     IF NOT EXISTS (SELECT 1 FROM dbo.tai_khoan WHERE id = @id)
     BEGIN
         RAISERROR('Khong tim thay tai khoan!', 16, 1);

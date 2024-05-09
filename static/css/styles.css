@@ -1,3 +1,69 @@
-h1 {
-	color: red
+:root {
+	--main-color-1: #FC4100;
+	--main-color-2: #FFC55A;
+	--main-color-3: #00215E;
+	--main-color-4: #2C4E80;
+	--main-color-5: #FEFEFE;
+}
+
+body {
+	font-family: "inter", sans-serif;
+}
+
+* {
+	font-weight: 500;
+}
+
+.ds-logo {
+	font-weight: bold;
+	font-size: 1.25rem;
+	color: #FEFEFE;
+	padding: 0.5rem 1.5rem;
+}
+
+.ds-bg-color-1 {
+	background-color: var(--main-color-3);
+}
+
+.ds-text-white {
+	color: #FEFEFE !important;
+}
+
+.ds-text-dark {
+	color: var(--main-color-3) !important;
+}
+
+.ds-link {
+	display: block;
+	width: 100%;
+	color: #FEFEFE;
+	padding: 0.5rem 1.5rem;
+	text-decoration: none;
+}
+
+.ds-link:hover {
+	text-decoration: underline;
+}
+
+.ds-container {
+	margin-bottom: 50px;
+}
+
+.ds-nav {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 1.5rem;
+	background-color: var(--main-color-3);
+}
+
+.ds-main {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--main-color-5);
+	padding: 0 1.5rem;
+	align-items: center;
+}
+
+.ds-content {
+	padding: 0 1.5rem;
 }

@@ -23,6 +23,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('apps/q31/', q31.index),
-    path('apps/q31/create-account/', q31.create_account),
+    path('apps/q31/edit/', q31.edit_page),
+    path('apps/q31/del/', q31.del_page),
 ] 
 # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

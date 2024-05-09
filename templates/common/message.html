@@ -1,0 +1,11 @@
+{% if status == "created" %}
+<div class="text-success text-center p-3 border border-success-subtle bg-success-subtle rounded">
+	{{message}}
+</div>
+{% endif %}
+
+{% if status == "error" %}
+<div class="text-danger text-center p-3 border border-danger-subtle bg-danger-subtle rounded">
+	{{message}}
+</div>
+{% endif %}

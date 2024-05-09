@@ -1,0 +1,92 @@
+<div class="ds-logo ds-text-dark pt-3 pb-3 mb-3 text-center">
+	Xoá dữ liệu vào bảng dbo.tai_khoan
+</div>
+
+{% include '../common/message.html' %}
+
+<form method="POST" action="/apps/q31/del/?id={{form.id}}">
+    {% csrf_token %}
+	<div class="mb-3">
+        <label class="form-label">ID</label>
+		<select
+			id="del-select"
+            name="id"
+            class="form-control"
+        >
+            <option value="" disabled selected>Chọn ID</option>
+			{% for id in ids %}
+				<option value="{{ id.0 }}" 
+					{% if id.0 == form.id %}
+						selected="selected"
+					{% endif %}
+				>{{ id.0 }}</option>
+			{% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Họ</label>
+        <input name="ho" class="form-control" value="{{form.ho}}" disabled/>
+        <span class="text-danger fw-normal">{{ error.ho }}</span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Tên</label>
+        <input name="ten" class="form-control" value="{{form.ten}}" disabled/>
+        <span class="text-danger fw-normal">{{ error.ten }}</span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Tên tài khoản</label>
+        <input
+            name="ten_tai_khoan"
+            class="form-control"
+            value="{{form.ten_tai_khoan}}"
+            disabled
+        />
+        <span class="text-danger fw-normal">{{ error.ten_tai_khoan }}</span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Mật khẩu</label>
+        <input
+            type="password"
+            name="mat_khau"
+            class="form-control"
+            value="{{form.mat_khau}}"
+            disabled/>
+        <span class="text-danger fw-normal">{{ error.mat_khau }}</span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Giới tính</label>
+        <select
+            name="gioi_tinh"
+            class="form-control"
+            value="{{form.gioi_tinh}}"
+            disabled
+        >
+            <option value="1">Nam</option>
+            <option value="0">Nữ</option>
+        </select>
+        <span class="text-danger fw-normal">{{ error.gioi_tinh }}</span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input
+            type="email"
+            name="email"
+            class="form-control"
+            value="{{form.email}}"
+            disabled/>
+        <span class="text-danger fw-normal">{{ error.email }}</span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Ngày sinh</label>
+        <input
+            type="date"
+            name="ngay_sinh"
+            class="form-control"
+            value="{{form.ngay_sinh}}"
+            disabled/>
+        <span class="text-danger fw-normal">{{ error.ngay_sinh }}</span>
+    </div>
+    <div class="text-end mt-4">
+        <button type="submit" class="btn btn-danger">Xoá</button>
+    </div>
+</form>
