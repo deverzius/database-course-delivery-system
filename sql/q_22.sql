@@ -37,7 +37,7 @@ GO
 -- Trigger 2: Khi có hành động INSERT, UPDATE, DELETE trên bảng dbo.nhan_vien, cập nhật tổng số nhân viên của chi nhánh trong bảng dbo.chi_nhanh
 CREATE TRIGGER dbo.cap_nhat_so_nhan_vien_chi_nhanh
 ON dbo.nhan_vien
-AFTER INSERT, UPDATE, DELETE
+AFTER INSERT, DELETE
 AS
 BEGIN
 	DECLARE @id_chi_nhanh INT;

@@ -16,8 +16,6 @@ CREATE FUNCTION dbo.tinh_doanh_thu_don_van_chuyen_trong_thang
 RETURNS FLOAT
 AS
 BEGIN
-	DECLARE @doanh_thu FLOAT;
-
 	DECLARE cursor_don_van_chuyen CURSOR FOR
 	(
 		SELECT
@@ -70,23 +68,6 @@ BEGIN
 
 	RETURN @tong_doanh_thu;
 END;
-GO
-
--- DEMO
--- Lấy data của các đơn vận chuyển trong tháng 5 năm 2024
-SELECT
-	tien_hang,
-	tien_ship,
-	phan_tram_giam,
-	so_tien_giam_toi_da,
-	gia_tri_don_toi_thieu
-FROM dbo.don_van_chuyen
-	JOIN dbo.don_hang ON don_van_chuyen.id = don_hang.id
-	JOIN dbo.ma_khuyen_mai ON don_hang.id_ma_khuyen_mai = ma_khuyen_mai.id
-WHERE MONTH(don_hang.ngay_tao) = 5 AND YEAR(don_hang.ngay_tao) = 2024;
-GO
--- Tính doanh thu của các đơn vận chuyển trong tháng 5 năm 2024
-SELECT dbo.tinh_doanh_thu_don_van_chuyen_trong_thang(5, 2024) AS tong_doanh_thu_thang
 GO
 
 
@@ -147,11 +128,4 @@ BEGIN
 
 	RETURN @danh_gia_trung_binh;
 END;
-GO
-
--- DEMO
--- Not a shipper
-SELECT dbo.tinh_toan_danh_gia_trung_binh_cua_shipper_trong_thang(20, 5, 2024) as danh_gia_trung_binh_cua_shipper_trong_thang
--- Shipper
-SELECT dbo.tinh_toan_danh_gia_trung_binh_cua_shipper_trong_thang(24, 5, 2024) as danh_gia_trung_binh_cua_shipper_trong_thang
 GO

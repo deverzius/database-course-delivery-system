@@ -145,12 +145,6 @@ BEGIN
 END;
 GO
 
--- DEMO
-EXEC dbo.sua_tai_khoan 30, 'olivermartin', 'password30', 0, 'oliver.martin@mail.com', '1987-11-30', 'Martin', 'Oliver';
-EXEC dbo.sua_tai_khoan 30, 'categorymartin', 'passwordpassword', 0, 'category.martin@mail.com', '2000-11-30', 'Martin', 'Category';
-GO
-
-
 
 
 
@@ -182,6 +176,3 @@ BEGIN
     SELECT 'Xoa tai khoan thanh cong!' AS Message;
 END;
 GO
--- DEMO
-EXEC dbo.xoa_tai_khoan 1;
-UPDATE dbo.tai_khoan SET da_xoa = 0 WHERE id = 1;
