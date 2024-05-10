@@ -3,28 +3,39 @@
         <tr>
             <th scope="col">*</th>
             <th scope="col" class="ds-text-main-1">ID</th>
-            <th scope="col">Tên món</th>
-            <th scope="col">Giá</th>
-            <th scope="col">Mô tả</th>
-            <th scope="col">ID nhà hàng</th>
-            <th scope="col">Số lượng đã đặt</th>
+            <th scope="col">Tên tài khoản</th>
+            {% comment %} <th scope="col">Mật khẩu</th> {% endcomment %}
+            <th scope="col">SĐT</th>
+            <th scope="col">Giới tính</th>
+            <th scope="col">Email</th>
+            <th scope="col">Ngày sinh</th>
+            <th scope="col">Ngày tạo</th>
+            <th scope="col">Họ</th>
+            <th scope="col">Tên</th>
+            <th scope="col">Đã xoá</th>
         </tr>
     </thead>
     <tbody>
-        {% for row in foods %}
+        {% for row in accounts %}
         <tr class="ds-tbl-row">
             <th scope="row" class="ds-tbl-td">{{ forloop.counter }}</th>
             <td class="ds-text-main-1 ds-tbl-td">{{ row.0 }}</td>
             <td class="ds-tbl-td">{{ row.1 }}</td>
-            <td class="ds-tbl-td">{{ row.2 }}</td>
+            {% comment %} <td class="ds-tbl-td">{{ row.2 }}</td> {% endcomment %}
             <td class="ds-tbl-td">{{ row.3 }}</td>
             <td class="ds-tbl-td">{{ row.4 }}</td>
             <td class="ds-tbl-td">{{ row.5 }}</td>
+            <td class="ds-tbl-td">{{ row.6 }}</td>
+            <td class="ds-tbl-td">{{ row.7 }}</td>
+            <td class="ds-tbl-td">{{ row.8 }}</td>
+            <td class="ds-tbl-td">{{ row.9 }}</td>
+            <td class="ds-tbl-td">{{ row.10 }}</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-{% comment %} <nav aria-label="...">
+{% comment %}
+<nav aria-label="...">
     <ul class="pagination">
         <li class="page-item disabled">
             <a class="page-link">Previous</a>
@@ -42,4 +53,5 @@
             <a class="page-link" href="#">Next</a>
         </li>
     </ul>
-</nav> {% endcomment %}
+</nav>
+{% endcomment %}

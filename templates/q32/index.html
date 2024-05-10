@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include '../common/head.html' %}
+    <body>
+        <div class="ds-container">
+            {% include '../common/nav.html' %}
+            <div class="ds-main">
+                <div class="ds-content w-100">
+                    <div
+                        class="ds-logo ds-text-dark pt-3 pb-3 mb-3 text-center"
+                    >
+                        Danh sách các tài khoản
+                    </div>
+                    <div class="d-flex gap-2 align-items-center mb-2">
+                        <div class="input-group">
+                            <span class="input-group-text">Truy vấn Where</span>
+                            <input 
+                                id="where-input" type="text" class="form-control" 
+                                placeholder="Nhập truy vấn WHERE" 
+                                aria-label="where-query" aria-describedby="basic-addon1" 
+                                value="{{where}}"
+                            >
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-text">Sắp xếp theo</span>
+                            <select
+                                id="sort-select"
+                                class="form-select mb-0 fw-medium ds-small-fs"
+                            >
+                                {%for s in sorts%}
+                                <option value="{{s.0}}"
+                                    {% if s.0 == sort %}
+                                        selected
+                                    {% endif %}
+                                >{{s.1}}</option>
+                                {%endfor%}
+                            </select>
+                            <span id="sort-toggle" class="input-group-text ds-sort-toggle-custom">
+                                {% if desc == True %}
+                                    <i class="bi bi-sort-up"></i>
+                                {% else %}
+                                    <i class="bi bi-sort-down-alt"></i>
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Tìm kiếm</span>
+                            <input 
+                                id="search-bar" type="text" class="form-control" 
+                                placeholder="Nhập id, tên tài khoản, sđt, email, ngày sinh, ngày tạo hoặc họ và tên" 
+                                aria-label="search" aria-describedby="basic-addon1" 
+                                value="{{search}}"
+                            >
+                        </div>
+                    {% include '../common/message.html' %}
+                    {% include './table.html' %}
+                </div>
+            </div>
+        </div>
+    </body>
+    {% include '../common/foot.html' %}
+</html>

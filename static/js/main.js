@@ -75,11 +75,23 @@ if (sortToggle) {
 let searchBar = document.getElementById("search-bar");
 if (searchBar) {
 	searchBar.onkeydown = function (e) {
-		if (e.key == "Enter")
+		if (e.key === "Enter")
 		{
 			const params = new URLSearchParams(window.location.search);
 			params.set("search", this.value);
 			window.location.search = params.toString();
 		}
 	};
+}
+
+let whereInput = document.getElementById("where-input");
+if (whereInput) {
+    whereInput.onkeydown = function (e) {
+        if (e.key === "Enter")
+        {
+            const params = new URLSearchParams(window.location.search);
+            params.set("where", this.value);
+            window.location.search = params.toString();
+        }
+    };
 }

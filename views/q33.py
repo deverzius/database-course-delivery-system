@@ -24,6 +24,7 @@ def index(request):
     sort = request.GET.get("sort") or "so_luong_da_dat"
     desc = True if request.GET.get("desc") else False
     search = request.GET.get("search")
+    where = request.GET.get("where") or ''
 
     if month:
         context.update({"month": int(month)})
@@ -35,16 +36,24 @@ def index(request):
         context.update({"desc": desc})
     if search:
         context.update({"search": search})
+    if where:
+        context.update({"where": where})
     if not month or not year:
         return render(request, "q33/index.html", context)
 
     cursor = connection.cursor()
-    cursor.execute(
-        f"EXEC dbo.lay_cac_mon_an_duoc_dat_nhieu_nhat_trong_thang {month}, {year}"
-    )
-    rows = cursor.fetchall()
+    try:
+        query = f"EXEC dbo.lay_cac_mon_an_duoc_dat_nhieu_nhat_trong_thang {month}, {year}, '{where}'"
+        print(query)
+        cursor.execute(query)
+        rows = cursor.fetchall()
+        context.update({"message": ""})
+    except Exception as e:
+        rows = []
+        context.update({"status": "error"})
+        context.update({"message": str(e)})
 
-    # sort = id
+
     if sort:
         sortOptionsIdx = sorts.index(next(filter(lambda x: x[0] == sort, sorts)))
     else:

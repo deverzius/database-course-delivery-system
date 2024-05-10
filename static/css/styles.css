@@ -89,10 +89,14 @@ body {
 }
 
 .ds-w-28 {
-	width: 28% !important;
+	width: 32% !important;
 }
 
 .ds-sort-toggle-custom:hover {
 	cursor: pointer;
 	background-color: #eee;
+}
+
+.ds-w-xl {
+	width: 90%;
 }

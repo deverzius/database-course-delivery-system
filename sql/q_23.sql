@@ -7,77 +7,32 @@
 */
 
 
-CREATE PROCEDURE dbo.lay_tai_khoan_khach_hang
-	@id INT = NULL,
-	@ten_tai_khoan NVARCHAR(100) = NULL,
-	@mat_khau NVARCHAR(100) = NULL,
-	@sdt NVARCHAR(100) = NULL,
-	@gioi_tinh BIT = NULL,
-	@email NVARCHAR(100) = NULL,
-	@ngay_sinh DATE = NULL,
-	@ngay_tao DATE = NULL,
-	@ho NVARCHAR(100) = NULL,
-	@ten NVARCHAR(100) = NULL,
-	@da_xoa BIT = NULL,
-	@cod_kha_dung INT = NULL,
-	@so_don_da_dat INT = NULL,
-	@loai_khach_hang NVARCHAR(100) = NULL
+-- Procedure 1: Lấy tất cả thông tin của tài khoản
+CREATE PROCEDURE dbo.lay_tai_khoan
+	@where NVARCHAR(200) = ''
 AS
 BEGIN
-	SELECT
-		tk.id,
-		tk.ten_tai_khoan,
-		tk.mat_khau,
-		tk.sdt,
-		tk.gioi_tinh,
-		tk.email,
-		tk.ngay_sinh,
-		tk.ngay_tao,
-		tk.ho,
-		tk.ten,
-		tk.da_xoa,
-		kh.cod_kha_dung,
-		kh.so_don_da_dat,
-		kh.loai_khach_hang
-	FROM
-		dbo.tai_khoan AS tk
-	JOIN
-		dbo.khach_hang AS kh ON tk.id = kh.id
-	WHERE 
-		(@id IS NULL OR tk.id = @id) AND
-		(@ten_tai_khoan IS NULL OR tk.ten_tai_khoan = @ten_tai_khoan) AND
-		(@mat_khau IS NULL OR tk.mat_khau = @mat_khau) AND
-		(@sdt IS NULL OR tk.sdt = @sdt) AND
-		(@gioi_tinh IS NULL OR tk.gioi_tinh = @gioi_tinh) AND
-		(@email IS NULL OR tk.email = @email) AND
-		(@ngay_sinh IS NULL OR tk.ngay_sinh = @ngay_sinh) AND
-		(@ngay_tao IS NULL OR tk.ngay_tao = @ngay_tao) AND
-		(@ho IS NULL OR tk.ho = @ho) AND
-		(@ten IS NULL OR tk.ten = @ten) AND
-		(@da_xoa IS NULL OR tk.da_xoa = @da_xoa) AND
-		(@cod_kha_dung IS NULL OR kh.cod_kha_dung = @cod_kha_dung) AND
-		(@so_don_da_dat IS NULL OR kh.so_don_da_dat = @so_don_da_dat) AND
-		(@loai_khach_hang IS NULL OR kh.loai_khach_hang = @loai_khach_hang)
-	ORDER BY 
-		tk.id, tk.ten_tai_khoan
+	DECLARE @sql NVARCHAR(700);
+	IF @where = ''
+		SET @sql = N'SELECT * FROM dbo.tai_khoan';
+	ELSE
+		SET @sql = N'SELECT * FROM dbo.tai_khoan WHERE ' + @where;
+	EXEC (@sql);
 END;
 GO
--- DEMO
-EXEC dbo.lay_tai_khoan_khach_hang;
-EXEC dbo.lay_tai_khoan_khach_hang @gioi_tinh=0;
-EXEC dbo.lay_tai_khoan_khach_hang @loai_khach_hang="lau_nam";
-GO
 
 
 
--- Procedure 2: Danh sách các món ăn được đặt nhiều nhất trong tháng (món ăn phải có tối thiểu 3 đơn)
+-- Procedure 2: Danh sách các món ăn được đặt nhiều nhất trong tháng
 CREATE PROCEDURE dbo.lay_cac_mon_an_duoc_dat_nhieu_nhat_trong_thang
-	@thang INT,
-	@nam INT
+	@thang NVARCHAR(3),
+	@nam NVARCHAR(5),
+	@where NVARCHAR(300) = ''
 AS
 BEGIN
-	SELECT
-		ma.id,
+	DECLARE @sql NVARCHAR(700);
+	SET @sql = N'SELECT DISTINCT
+		ma.id as id,
 		ma.ten_mon,
 		ma.gia,
 		ma.mo_ta,
@@ -90,16 +45,22 @@ BEGIN
 	JOIN
 		dbo.don_hang AS dh ON gma.id_don_mon_an = dh.id
 	WHERE
-		MONTH(dh.ngay_tao) = @thang AND
-		YEAR(dh.ngay_tao) = @nam
-	GROUP BY
-		ma.id, ma.ten_mon, ma.gia, ma.mo_ta, ma.id_nha_hang
-	HAVING 
-		SUM(gma.so_luong) >= 3
-	ORDER BY
-		so_luong_da_dat DESC
+		MONTH(dh.ngay_tao) = ' + @thang + ' AND
+		YEAR(dh.ngay_tao) = ' + @nam + ' '
+
+	SET @sql = @sql + N'GROUP BY ma.id, ma.ten_mon, ma.gia, ma.mo_ta, ma.id_nha_hang'
+
+	SET @sql = N'SELECT * FROM (' + @sql + N') as top_mon_an ';
+
+	IF @where <> ''
+		SET @sql = @sql + N' WHERE ' + @where;
+
+	SET @sql = @sql + N' ORDER BY so_luong_da_dat DESC';
+
+	EXEC (@sql);
 END;
 GO
+
 -- DEMO
-EXEC dbo.lay_cac_mon_an_duoc_dat_nhieu_nhat_trong_thang 5, 2024;
+EXEC dbo.lay_cac_mon_an_duoc_dat_nhieu_nhat_trong_thang 5, 2024, ''
 
