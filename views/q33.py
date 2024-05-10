@@ -36,7 +36,7 @@ def index(request):
     if search:
         context.update({"search": search})
     if not month or not year:
-        return render(request, "q32/index.html", context)
+        return render(request, "q33/index.html", context)
 
     cursor = connection.cursor()
     cursor.execute(
@@ -52,15 +52,16 @@ def index(request):
     rows = sorted(rows, key=lambda tup: tup[sortOptionsIdx], reverse=desc)
 
     if search:
+        non_accent_search = convert_to_non_accent_vietnamese(search)
         rows = list(
             filter(
-                lambda x: search.lower() in x[1].lower()
-                or str(search) in str(x[4])
-                or search.lower() in x[3].lower(),
+                lambda x: non_accent_search.lower() in convert_to_non_accent_vietnamese(x[1]).lower()
+                or str(non_accent_search) in str(x[4])
+                or non_accent_search.lower() in convert_to_non_accent_vietnamese(x[3]).lower(),
                 rows,
             )
         )
 
     context.update({"foods": rows})
 
-    return render(request, "q32/index.html", context)
+    return render(request, "q33/index.html", context)
