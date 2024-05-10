@@ -4,7 +4,7 @@
 
 {% include '../common/message.html' %}
 
-<form method="POST" action="/apps/q31/edit/?id={{form.id}}">
+<form method="POST" action="/apps/q31/edit/?id={{form.id}}&redirect={{redirect}}">
     {% csrf_token %}
 	<div class="mb-3">
         <label class="form-label">ID</label>

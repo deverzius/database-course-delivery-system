@@ -15,13 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from views import q31, q32, q33
+from views import home, q31, q32, q33
 from django.conf.urls.static import static
 from django.conf import settings
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('home/', home.index),
     path('apps/q31/', q31.index),
     path('apps/q32/', q32.index),
     path('apps/q33/', q33.index),

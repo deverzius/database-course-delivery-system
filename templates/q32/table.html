@@ -17,7 +17,7 @@
     </thead>
     <tbody>
         {% for row in accounts %}
-        <tr class="ds-tbl-row">
+        <tr class="ds-tbl-row" onclick="handleClickAccountRow({{row.0}})">
             <th scope="row" class="ds-tbl-td">{{ forloop.counter }}</th>
             <td class="ds-text-main-1 ds-tbl-td">{{ row.0 }}</td>
             <td class="ds-tbl-td">{{ row.1 }}</td>

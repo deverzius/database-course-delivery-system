@@ -19,6 +19,11 @@ body {
 	font-size: 1.25rem;
 	color: #FEFEFE;
 	padding: 0.5rem 1.5rem;
+	text-decoration: none !important;
+}
+
+.ds-logo:hover {
+	opacity: 0.8;
 }
 
 .ds-bg-color-1 {
@@ -99,4 +104,21 @@ body {
 
 .ds-w-xl {
 	width: 90%;
+}
+
+.ds-nav-btn {
+	color: #FEFEFE;
+	background: none;
+	border: none;
+}
+
+.ds-nav-btn:hover {
+	color: var(--main-color-2);
+	text-decoration: underline;
+}
+
+.ds-navbar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }

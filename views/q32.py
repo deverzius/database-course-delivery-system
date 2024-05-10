@@ -26,8 +26,8 @@ def index(request):
 
     sort = request.GET.get("sort") or "id"
     desc = True if request.GET.get("desc") else False
-    search = request.GET.get("search")
-    where = request.GET.get("where")
+    search = request.GET.get("search") or ""
+    where = request.GET.get("where") or ""
 
     if sort:
         context.update({"sort": sort})
@@ -42,7 +42,12 @@ def index(request):
     try:
         cursor.execute(f"EXEC dbo.lay_tai_khoan '{where}'")
         rows = cursor.fetchall()
-        context.update({"message": ""})
+        
+        if request.GET.get("status") == "created":
+            context.update({"status": "created"})
+            context.update({"message": request.GET.get("message")})
+        else:
+            context.update({"message": ""})
     except Exception as e:
         rows = []
         context.update({"status": "error"})

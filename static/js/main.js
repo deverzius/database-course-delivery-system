@@ -95,3 +95,9 @@ if (whereInput) {
         }
     };
 }
+
+var handleClickAccountRow = function (id) { 
+    const currentPath = window.location.pathname + window.location.search
+    const encode = encodeURIComponent(currentPath);
+    window.location.href = `/apps/q31/edit/?id=${id}&redirect=` + encode;
+}

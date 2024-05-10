@@ -19,12 +19,16 @@ def index(request):
 
 def edit_page(request):
     id = request.GET.get("id")
+    redirect_url = request.GET.get("redirect")
 
     context = {}
     cursor = connection.cursor()
     cursor.execute("SELECT id FROM dbo.tai_khoan ORDER BY id ASC")
     rows = cursor.fetchall()
     context.update({"ids": rows})
+    
+    if redirect_url:
+        context.update({"redirect": redirect_url})
 
     if id and request.method == "POST":
         context.update(edit_account(request, id))
@@ -32,19 +36,31 @@ def edit_page(request):
     if id:
         cursor.execute(f"SELECT * FROM dbo.tai_khoan WHERE id={id}")
         row = cursor.fetchone()
-        context.update({"form": {
-            "id": row[0],
-            "ten_tai_khoan": row[1],
-            "mat_khau": row[2],
-            "sdt": row[3],
-            "gioi_tinh": row[4],
-            "email": row[5],
-            "ngay_sinh": str(row[6]),
-            "ho": row[8],
-            "ten": row[9],
-        }})
+        context.update(
+            {
+                "form": {
+                    "id": row[0],
+                    "ten_tai_khoan": row[1],
+                    "mat_khau": row[2],
+                    "sdt": row[3],
+                    "gioi_tinh": row[4],
+                    "email": row[5],
+                    "ngay_sinh": str(row[6]),
+                    "ho": row[8],
+                    "ten": row[9],
+                }
+            }
+        )
 
-    return render(request, "q31/edit-page.html", context)
+    if context.get("redirect") and context.get("status") == "created":
+        print("Now redirect: ...", redirect_url)
+        return redirect(f"{redirect_url}?{urlencode({
+            "status": "created",
+            "message": "Sửa thành công"
+        })}")
+    else:
+        print("No redirect")
+        return render(request, "q31/edit-page.html", context)
 
 
 def del_page(request):
@@ -63,17 +79,21 @@ def del_page(request):
     if id:
         cursor.execute(f"SELECT * FROM dbo.tai_khoan WHERE id={id}")
         row = cursor.fetchone()
-        context.update({"form": {
-            "id": row[0],
-            "ten_tai_khoan": row[1],
-            "mat_khau": row[2],
-            "sdt": row[3],
-            "gioi_tinh": row[4],
-            "email": row[5],
-            "ngay_sinh": str(row[6]),
-            "ho": row[8],
-            "ten": row[9],
-        }})
+        context.update(
+            {
+                "form": {
+                    "id": row[0],
+                    "ten_tai_khoan": row[1],
+                    "mat_khau": row[2],
+                    "sdt": row[3],
+                    "gioi_tinh": row[4],
+                    "email": row[5],
+                    "ngay_sinh": str(row[6]),
+                    "ho": row[8],
+                    "ten": row[9],
+                }
+            }
+        )
 
     return render(request, "q31/del-page.html", context)
 
@@ -111,7 +131,6 @@ def edit_account(request, id):
     try:
         cursor = connection.cursor()
         error, query = validate_edit_account_form(request, error, id)
-        print(query)
         cursor.execute(query)
         cursor.fetchone()
         context = {
@@ -131,6 +150,7 @@ def edit_account(request, id):
         }
 
         return context
+
 
 def del_account(request, id):
     error = {}
@@ -156,4 +176,3 @@ def del_account(request, id):
         }
 
         return context
-
