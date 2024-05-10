@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from views import q31
+from views import q31, q32
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -23,6 +23,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('apps/q31/', q31.index),
+    path('apps/q32/', q32.index),
     path('apps/q31/edit/', q31.edit_page),
     path('apps/q31/del/', q31.del_page),
 ] 

@@ -53,7 +53,7 @@ def del_page(request):
 
     context = {}
     cursor = connection.cursor()
-    cursor.execute("SELECT id FROM dbo.tai_khoan ORDER BY id ASC")
+    cursor.execute("SELECT id FROM dbo.tai_khoan WHERE da_xoa=0 ORDER BY id ASC")
     rows = cursor.fetchall()
     context.update({"ids": rows})
 

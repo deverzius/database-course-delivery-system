@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include '../common/head.html' %}
+    <body>
+        <div class="ds-container">
+            {% include '../common/nav.html' %}
+            <div class="ds-main">
+                <div class="ds-content">
+                    <div
+                        class="ds-logo ds-text-dark pt-3 pb-3 mb-3 text-center"
+                    >
+                        Danh sách các món ăn được đặt nhiều nhất trong tháng
+                        (món ăn phải có tối thiểu 3 đơn)
+                    </div>
+                    <div class="d-flex gap-2 align-items-center mb-2">
+                        <div class="input-group ds-w-28">
+                            <span class="input-group-text">Tháng</span>
+                            <select
+                                id="month-select"
+                                class="form-select mb-0 fw-medium ds-small-fs"
+                            >
+                                <option 
+                                {% if month == None %}
+                                    selected
+                                {% endif %}
+                                disabled hidden>Chọn tháng</option>
+                                {%for m in months%}
+                                <option value="{{m}}"
+                                    {% if m == month %}
+                                        selected
+                                    {% endif %}
+                                >{{m}}</option>
+                                {%endfor%}
+                            </select>
+                        </div>
+
+                        <div class="input-group ds-w-28">
+                            <span class="input-group-text">Năm</span>
+                            <select
+                                id="year-select"
+                                class="form-select mb-0 fw-medium ds-small-fs"
+                            >
+                                <option 
+                                {% if year == None %}
+                                    selected
+                                {% endif %}
+                                disabled hidden>Chọn năm</option>
+                                {%for y in years%}
+                                <option value="{{y}}"
+                                    {% if y == year %}
+                                        selected
+                                    {% endif %}
+                                >{{y}}</option>
+                                {%endfor%}
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <span class="input-group-text">Sắp xếp theo</span>
+                            <select
+                                id="sort-select"
+                                class="form-select mb-0 fw-medium ds-small-fs"
+                            >
+                                {%for s in sorts%}
+                                <option value="{{s.0}}"
+                                    {% if s.0 == sort %}
+                                        selected
+                                    {% endif %}
+                                >{{s.1}}</option>
+                                {%endfor%}
+                            </select>
+                            <span id="sort-toggle" class="input-group-text ds-sort-toggle-custom">
+                                {% if desc == True %}
+                                    <i class="bi bi-sort-up"></i>
+                                {% else %}
+                                    <i class="bi bi-sort-down-alt"></i>
+                                {% endif %}
+                            </span>
+                        </div>
+                        
+
+                    </div>
+                    <div class="mb-3">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Tìm kiếm</span>
+                            <input 
+                                id="search-bar" type="text" class="form-control" 
+                                placeholder="Nhập tên, giá hoặc id nhà hàng" 
+                                aria-label="search" aria-describedby="basic-addon1" 
+                                value={{search}}
+                            >
+                        </div>
+                    {% include './table.html' %}
+                </div>
+            </div>
+        </div>
+    </body>
+    {% include '../common/foot.html' %}
+</html>

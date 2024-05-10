@@ -33,6 +33,10 @@ body {
 	color: var(--main-color-3) !important;
 }
 
+.ds-text-main-1 {
+	color: var(--main-color-1) !important;
+}
+
 .ds-link {
 	display: block;
 	width: 100%;
@@ -66,4 +70,29 @@ body {
 
 .ds-content {
 	padding: 0 1.5rem;
+}
+
+.ds-tbl-row {
+	cursor: pointer !important;
+}
+
+.ds-tbl-td {
+	font-weight: 400;
+}
+
+.ds-icon-top {
+	font-size: 2rem;
+}
+
+.ds-small-fs {
+	font-size: 0.9rem !important;
+}
+
+.ds-w-28 {
+	width: 28% !important;
+}
+
+.ds-sort-toggle-custom:hover {
+	cursor: pointer;
+	background-color: #eee;
 }
