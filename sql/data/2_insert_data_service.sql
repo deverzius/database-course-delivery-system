@@ -113,9 +113,10 @@ VALUES
 	(10, 650000, N'159 Nguyễn Huệ, Quận 1, TP.HCM', 11.5);
 GO
 
-INSERT INTO dbo.loai_hang_don_van_chuyen (id_don_van_chuyen, loai_hang)
+INSERT INTO dbo.loai_hang_don_van_chuyen
+	(id_don_van_chuyen, loai_hang)
 VALUES
-    (1, 'hang_dien_tu'),
+	(1, 'hang_dien_tu'),
 	(2, 'hang_dien_tu'),
 	(3, 'hang_thuc_pham'),
 	(4, 'hang_quan_ao'),
@@ -126,7 +127,8 @@ VALUES
 	(9, 'hang_my_pham'),
 	(10, 'hang_thuc_pham');
 
-INSERT INTO dbo.don_mon_an (id, tong_tien_mon)
+INSERT INTO dbo.don_mon_an
+	(id, tong_tien_mon)
 VALUES
 	(11, 0),
 	(12, 0),
@@ -150,48 +152,155 @@ VALUES
 	(30, 0);
 GO
 
-INSERT INTO dbo.gom_mon_an (id_don_mon_an, id_mon_an, so_luong)
+
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
 VALUES
-	(11, 1, 2),
-	(11, 2, 2),
-	(12, 2, 3),
-	(12, 3, 1),
-	(12, 4, 2),
-	(13, 3, 3),
-	(14, 4, 4),
-	(15, 5, 2),
-	(16, 6, 3),
-	(17, 7, 4),
-	(18, 8, 2),
-	(19, 9, 3),
-	(20, 10, 3),
-	(21, 11, 4),
-	(22, 12, 2),
-	(23, 13, 3),
-	(24, 14, 4),
-	(25, 15, 2),
-	(26, 16, 3),
-	(27, 17, 4),
-	(28, 18, 2),
-	(29, 19, 3),
-	(30, 20, 3),
-	(11, 21, 4),
-	(12, 22, 2),
-	(13, 23, 3),
-	(14, 24, 4),
-	(15, 25, 2),
-	(16, 26, 3),
-	(17, 27, 4),
-	(18, 28, 2),
-	(19, 29, 3),
-	(20, 30, 3),
-	(21, 1, 4),
-	(22, 2, 2),
-	(23, 3, 3),
-	(24, 4, 4),
-	(25, 5, 2),
-	(26, 6, 3),
-	(27, 7, 4),
-	(28, 8, 2),
-	(29, 9, 3),
+	(11, 1, 2);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(11, 2, 2);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(12, 2, 3);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(12, 3, 1);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(12, 4, 2);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(13, 3, 3);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(14, 4, 4);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(15, 5, 2);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(16, 6, 3);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(17, 7, 4);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(18, 8, 2);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(19, 9, 3);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(20, 10, 3);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(21, 11, 4);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(22, 12, 2);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(23, 13, 3);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(24, 14, 4);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(25, 15, 2);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(26, 16, 3);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(27, 17, 4);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(28, 18, 2);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(29, 19, 3);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(30, 20, 3);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(11, 21, 4);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(12, 22, 2);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(13, 23, 3);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(14, 24, 4);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(15, 25, 2);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(16, 26, 3);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(17, 27, 4);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(18, 28, 2);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(19, 29, 3);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES(20, 30, 3);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(21, 1, 4);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(22, 2, 2);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(23, 3, 3);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(24, 4, 4);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(25, 5, 2);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(26, 6, 3);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(27, 7, 4);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(28, 8, 2);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
+	(29, 9, 3);
+INSERT INTO dbo.gom_mon_an
+	(id_don_mon_an, id_mon_an, so_luong)
+VALUES
 	(30, 10, 3);

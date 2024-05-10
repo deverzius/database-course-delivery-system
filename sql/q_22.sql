@@ -16,20 +16,18 @@ BEGIN
 
     IF EXISTS (SELECT 1 FROM inserted)
         SELECT @id_don_mon_an = id_don_mon_an FROM inserted;
-	ELSE IF EXISTS (SELECT 1 from updated)
-		SELECT @id_don_mon_an = id_don_mon_an FROM updated;
 	ELSE
 		SELECT @id_don_mon_an = id_don_mon_an FROM deleted;
 
 
     UPDATE dbo.don_mon_an
-	SET tong_tien_mon = (
+	SET tong_tien_mon = ISNULL((
 		SELECT SUM(gma.so_luong * ma.gia * ISNULL(udma.phan_tram_giam, 1))
 			FROM dbo.gom_mon_an AS gma
 			INNER JOIN dbo.mon_an AS ma ON gma.id_mon_an = ma.id
 			LEFT JOIN dbo.uu_dai_mon_an AS udma ON udma.id_mon_an = gma.id_mon_an
 			WHERE gma.id_don_mon_an = dbo.don_mon_an.id
-	)
+	), 0)
 	WHERE id = @id_don_mon_an;
 
 END;

@@ -22,6 +22,10 @@ BEGIN
 
 	DECLARE @id INT;
 	SELECT @id = MAX(id) + 1 FROM dbo.tai_khoan;
+	IF @id IS NULL
+	BEGIN
+		SET @id = 1;
+	END
 
 	IF EXISTS (SELECT 1 FROM dbo.tai_khoan WHERE sdt = @sdt)
     BEGIN
