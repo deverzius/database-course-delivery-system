@@ -21,7 +21,7 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path('home/', home.index),
+    path('', home.index),
     path('apps/q31/', q31.index),
     path('apps/q32/', q32.index),
     path('apps/q33/', q33.index),
